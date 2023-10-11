@@ -1,19 +1,21 @@
-const $menuHamburguer = document.getElementById("menu-hamburguer"),
-      $menuHamburguerActivate = document.getElementById("menu-hamburguer-activate"),
-      $menuHamburguerItems = document.querySelectorAll(".item");
+const menuHamburguerActivate = (menuHBtn, menuHItem) => {
+    const d = document;
+    const $menuHamburguerActivate = document.getElementById("menu-hamburguer-activate");
 
 
-$menuHamburguer.addEventListener("click", () => {
-    if ($menuHamburguerActivate.style.display === "none"){
-        $menuHamburguerActivate.style.display = "flex"
-    } else {
-        $menuHamburguerActivate.style.display = "none"
-    }
-});
+    d.addEventListener("click", (e) => {
+        if (e.target.matches(menuHBtn)){
+            if ($menuHamburguerActivate.style.display === "none"){
+                        $menuHamburguerActivate.style.display = "flex"
+                    } else {
+                        $menuHamburguerActivate.style.display = "none"
+                    }
+        }
 
+        if (e.target.matches(menuHItem)){
+            $menuHamburguerActivate.style.display = "none";
+        }
+    })
+};
 
-$menuHamburguerItems.forEach(el => el.addEventListener("click", () => {
-    $menuHamburguerActivate.style.display = "none";
-}));
-
-
+menuHamburguerActivate(".menu-hamburguer",".item a");
